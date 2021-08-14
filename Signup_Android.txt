@@ -1,0 +1,160 @@
+package com.example.apaar97.BloodLine;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Patterns;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Signup extends AppCompatActivity {
+private EditText signup_username,signup_email,signup_password,signup_confirm_password;
+private Button signup_button;
+private RadioButton male_id,female_id,other_id,blood_a,blood_b,blood_abo,blood_o_plus,blood_o_negative;
+DatabaseReference databaseReference;
+FirebaseDatabase firebaseDatabase;
+private FirebaseAuth firebaseAuth;
+private ProgressBar signup_progressbar;
+private EditText signup_address;
+String gender=" ";
+String bloodG=" ";
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_signup);
+
+        signup_username= (EditText) findViewById(R.id.signup_username_id);
+        signup_email= (EditText) findViewById(R.id.signup_email_Id);
+        signup_password= (EditText) findViewById(R.id.signup_password_Id);
+        signup_confirm_password= (EditText) findViewById(R.id.signup_confirm_password_Id);
+        signup_button= (Button) findViewById(R.id.signup_buttonId);
+        male_id= (RadioButton) findViewById(R.id.Male_Radio_Id);
+        female_id= (RadioButton) findViewById(R.id.Female_Radio_Id);
+        other_id= (RadioButton) findViewById(R.id.Other_Radio_Id);
+        blood_a= (RadioButton) findViewById(R.id.blood_a);
+        blood_b= (RadioButton) findViewById(R.id.blood_b);
+        blood_abo= (RadioButton) findViewById(R.id.blood_abo);
+        blood_o_plus= (RadioButton) findViewById(R.id.blood_o_plus);
+        blood_o_negative=(RadioButton)findViewById(R.id.blood_o_negative);
+        signup_address= (EditText)findViewById(R.id.signup_address_id);
+        signup_progressbar= (ProgressBar) findViewById(R.id.signup_progressbar_Id);
+        databaseReference=FirebaseDatabase.getInstance().getReference("register");
+        firebaseAuth=FirebaseAuth.getInstance();
+
+        signup_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String username=signup_username.getText().toString().trim();
+                final String email=signup_email.getText().toString().trim();
+                final String password=signup_password.getText().toString().trim();
+                final String confirmpassword=signup_confirm_password.getText().toString().trim();
+                final String signupaddress= signup_address.getText().toString().trim();
+                if(male_id.isChecked()){
+                    gender="Male";
+                }
+                if(female_id.isChecked()){
+                    gender="Female";
+                }
+                if(other_id.isChecked()) {
+                    gender = "Others";
+                }
+                if(blood_a.isChecked()){
+                    bloodG="Blood Group A";
+                }
+                if(blood_b.isChecked()){
+                    bloodG="Blood Group B";
+                }
+                if(blood_abo.isChecked()){
+                    bloodG="Blood Group AB";
+                }
+                if(blood_o_plus.isChecked()){
+                    bloodG="Blood Group O+";
+                }
+                if(blood_o_negative.isChecked()){
+                    bloodG="Blood Group O+";
+                }
+                if(username.isEmpty()){
+                    signup_username.setError("Enter your Username");
+                    signup_username.requestFocus();
+                    return;
+                }
+                if(signupaddress.isEmpty()){
+                    signup_address.setError("Enter your Username");
+                    signup_address.requestFocus();
+                    return;
+                }
+                if(email.isEmpty()){
+                    signup_email.setError("Enter your email-id");
+                    signup_email.requestFocus();
+                    return;
+                }
+                if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                    signup_email.setError("Enter a valid email address");
+                    signup_email.requestFocus();
+                }
+                if(password.isEmpty()){
+                    signup_password.setError("Enter your password");
+                    signup_password.requestFocus();
+                    return;
+                }
+                if(password.length()<8){
+                    Toast.makeText(Signup.this, "Password to short", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                signup_progressbar.setVisibility(View.VISIBLE);
+               if(password.equals(confirmpassword)) {
+
+                   firebaseAuth.createUserWithEmailAndPassword(email, password)
+                           .addOnCompleteListener(Signup.this, new OnCompleteListener<AuthResult>() {
+                               @Override
+                               public void onComplete(@NonNull Task<AuthResult> task) {
+                                   if (task.isSuccessful()) {
+
+
+                                       register information=new register(username,email,password,confirmpassword,signupaddress,gender,bloodG);
+
+                                       FirebaseDatabase.getInstance().getReference("register")
+                                               .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                               .setValue(information).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                           @Override
+                                           public void onComplete(@android.support.annotation.NonNull Task<Void> task) {
+                                               signup_progressbar.setVisibility(View.GONE);
+                                               Toast.makeText(Signup.this, "Registration successfully", Toast.LENGTH_SHORT).show();
+                                               Intent intent=new Intent(getApplicationContext(),Navigation_bar.class);
+                                               startActivity(intent);
+                                           }
+                                       });
+
+                                   } else {
+
+                                       Toast.makeText(Signup.this, "Try Again", Toast.LENGTH_SHORT).show();
+
+                                   }
+
+
+                               }
+                           });
+               }
+            }
+        });
+    }
+}
