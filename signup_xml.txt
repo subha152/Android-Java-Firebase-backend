@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.apaar97.BloodLine.Signup">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="25dp"
+            >
+            <ImageView
+                android:layout_width="149dp"
+                android:layout_height="115dp"
+                android:layout_gravity="center"
+                android:src="@drawable/signuplogo"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign up"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:layout_gravity="center"
+                android:textColor="#FF0000"
+                />
+
+            <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <EditText
+                android:id="@+id/signup_username_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Full Name"
+                android:inputType="text"
+                android:textSize="20dp"
+                android:textStyle="italic"
+                android:ems="15"
+                android:textColor="#FF0000"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <EditText
+                    android:id="@+id/signup_email_Id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email-id"
+                    android:inputType="text"
+                    android:textSize="20dp"
+                    android:textStyle="italic"
+                    android:ems="15"
+                    android:textColor="#FF0000"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                app:passwordToggleEnabled="true"
+                android:textColor="#FF0000"
+                >
+                <EditText
+                    android:id="@+id/signup_password_Id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:textSize="20dp"
+                    android:textStyle="italic"
+                    android:ems="15"
+                    android:textColor="#FF0000"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                app:passwordToggleEnabled="true"
+                >
+
+                <EditText
+                    android:id="@+id/signup_confirm_password_Id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:textSize="20dp"
+                    android:textStyle="italic"
+                    android:ems="15"
+                    android:textColor="#FF0000"
+                    />
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
+
+                    <EditText
+                        android:id="@+id/signup_address_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Address"
+                        android:inputType="text"
+                        android:textSize="20dp"
+                        android:textStyle="italic"
+                        android:ems="15"
+                        android:textColor="#FF0000"
+                        />
+                </android.support.design.widget.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
+            <RadioGroup
+                android:id="@+id/gender_Id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="Gender"
+                    android:textSize="18sp"
+                    android:textColor="#FF0000"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/Male_Radio_Id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:textSize="16sp"
+                    android:textColor="#FF0000"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/Female_Radio_Id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:textSize="16sp"
+                    android:textColor="#FF0000"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/Other_Radio_Id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Other"
+                    android:textSize="16sp"
+                    android:textColor="#FF0000"
+                    android:textStyle="bold" />
+
+            </RadioGroup>
+
+
+            <RadioGroup
+                android:id="@+id/year_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Blood Group"
+                    android:textSize="20sp"
+                    android:textColor="#FF0000"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/blood_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A+"
+                    android:textColor="#FF0000"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/blood_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B+"
+                    android:textSize="12sp"
+                    android:textColor="#FF0000"
+                    android:textStyle="bold" />
+                <RadioButton
+                android:id="@+id/blood_abo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ABO"
+                android:textSize="12sp"
+                android:textColor="#FF0000"
+                android:textStyle="bold" />
+                <RadioButton
+                    android:id="@+id/blood_o_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O+"
+                    android:textSize="12sp"
+                    android:textColor="#FF0000"
+                    android:textStyle="bold" />
+                <RadioButton
+                    android:id="@+id/blood_o_negative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O-"
+                    android:textSize="12sp"
+                    android:textColor="#FF0000"
+                    android:textStyle="bold" />
+            </RadioGroup>
+
+
+            <Button
+                android:id="@+id/signup_buttonId"
+                android:layout_width="247dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp"
+                android:background="@drawable/button_style"
+                android:gravity="center"
+                android:text="Login to account"
+                android:textColor="#F5F2F2"
+                android:textSize="20sp" />
+            <ProgressBar
+                android:id="@+id/signup_progressbar_Id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
