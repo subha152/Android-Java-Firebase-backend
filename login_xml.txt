@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20sp"
+    tools:context="com.example.apaar97.BloodLine.Login_page">
+
+    <ImageView
+        android:layout_width="133dp"
+        android:layout_height="124dp"
+        android:layout_gravity="center"
+        android:src="@drawable/signuplogo"
+        android:layout_marginTop="70dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign in"
+        android:textSize="40dp"
+        android:textColor="#FF0000"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:textStyle="bold"
+        />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        >
+        <EditText
+            android:id="@+id/login_email_Id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email-id"
+            android:textStyle="italic"
+            android:textSize="20sp"
+            android:ems="15"
+            android:inputType="text"
+            android:textColor="#FF0000"
+
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/login_pasword_Id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="15"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:textColor="#FF0000"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/ForgetpasswordId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forget Password ?"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:layout_marginTop="20dp"
+        android:textColor="#EE3C3C"
+        />
+
+    <Button
+        android:id="@+id/login_button_Id"
+        android:layout_width="308dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_style"
+        android:text="Login to account"
+        android:textColor="#FFFEFE"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/goto_signupId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't have an account ? Signup"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="#ff22"
+        android:textStyle="italic"
+        android:textAllCaps="false"
+        />
+    <ProgressBar
+        android:id="@+id/login_progressbar_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        />
+</LinearLayout>
